@@ -59,4 +59,4 @@ $req->execute(array(
 // get the articles
 $myArticle = $req->fetchAll();
 ```
-Ainsi, le code est plus flexible et sécurisé.
+Ainsi, le code est flexible et plus sécurisé.
