@@ -39,12 +39,24 @@ Ensuite, profitons la fonctionnalité qu'offert cette bibliothèque.
 // select all articles in the table
 $articles = Database.selectAll("articles");
 // or, to add some precisions
-$myArticles = Database.selectAll("articles", "WHERE author = eric_fahendrena ORDER BY date");
+$articles = Database.selectAll("articles", "ORDER BY date");
 
 // to select an article
 $anArticle = Database.select("*", "articles", "id = :id", [id => 1]); // SELECT * FROM articles WHERE id = 1
-
-// to do something more flexible
-$pdo = Database.getPDO();
-$req = $pdo->prepare("SELECT * FROM articles WHERE id")
 ```
+Parfois,vous voulez faire comme ceci ```Database.selectAll("articles", "WHERE author = eric_fahendrena"). Bonne idée! Mais déconseillée, en raison de sécurité.
+À la place, faite comme ceci:
+```PHP
+// connect to database
+$pdo = Database.getPDO();
+
+// prepare a request, then execute
+$req = $pdo->prepare("SELECT * FROM articles WHERE author = :author");
+$req->execute(array(
+   author => "eric_fahendrena"
+));
+
+// get the articles
+$myArticle = $req->fetchAll();
+```
+Ainsi, le code est plus flexible et sécurisé.
