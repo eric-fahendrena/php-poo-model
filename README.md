@@ -22,6 +22,7 @@ return array(
    'PARENT_DIR' => '/path/to/directory',
 );
 ```
+
 ## Exemple d'utilisation ##
 Accedons au dossier nommé ```models``` pour créer un modèle. Créons une classe ```Article```, qui herite la classe ```Model```.
 ```PHP
@@ -60,3 +61,9 @@ $req->execute(array(
 $myArticle = $req->fetchAll();
 ```
 Ainsi, le code est flexible et plus sécurisé.
+
+## Contributions ##
+Consultez [ce guide](https://github.com/eric-fahendrena/php-oop-model/blob/b7ea7fc91e598b3f974be0118b1daaf9ce778439/CONTRIBUTING.md) sur la manière de contribuer sur ce projet.
+
+## Licence ##
+Apache-2.0 licence
